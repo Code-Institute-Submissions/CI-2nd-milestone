@@ -22,6 +22,25 @@ This website page is focussing for users that cannot book a tasting experience, 
 ### Features Left to Implement
 
 ## Technologies used
+This project uses several existing third party technologies to improve code quality and to speed up the development time. The following tools are used:
+- **[JQuery](https://jquery.com/)**
+    - JQuery makes things like HTML document traversal and manipulation, event handling, animation, and Ajax much simpler with an easy-to-use API that works across a multitude of browsers.
+- **[npm](https://www.npmjs.com/)**
+    - npm is the package manager for JavaScript and the world’s largest software registry. It will be used to manage all the javaScript dependencies used in this project.
+- **[webpack](https://webpack.js.org/)**
+    - Webpack is a build tool that puts all of your assets, including JavaScript, images, fonts, and CSS, in a dependency graph.
+- **[Jasmine](https://jasmine.github.io/)**
+    - A JavaScript testing framework to test the correct behaviour of the JavaScript code.
+
+Additionally, the following webpack modules are used:
+- **node-sass, sass-loader**
+    - These modules are used to convert sass or scss files to css files.
+- **babel-loader, babel/core, babel/preset-env**
+    - These modules are used to convert modern ES6 JavaScript files into robust ES5 JavaScript files which is supported on any browser.
+- **file-loader**
+- **html-webpack-plugin**
+- **mini-css-extract-plugin**
+
 
 ## Testing
 
@@ -31,3 +50,4 @@ This website page is focussing for users that cannot book a tasting experience, 
 ### Content
 ### Media
 ### Acknowledgements
+- The short description of webpack was used from [this](https://blog.andrewray.me/webpack-when-to-use-and-why/) blog.
