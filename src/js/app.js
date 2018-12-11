@@ -1,6 +1,2 @@
 // Import CSS files
-import '../css/global.scss';
-
-(function hello(){
-    alert("hoi");
-})()
+import '../css/main.scss';

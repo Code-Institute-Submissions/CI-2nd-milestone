@@ -1,0 +1,29 @@
+.section-block {
+  @include paddingTopBottom(40px);
+  background-color: $sectionColor;
+}
+
+.section-block h1 {
+  margin-bottom: 40px;
+}
+
+.app-canvas {
+  display: flex;
+  justify-content: space-between;
+  height: 500px;
+  width: 100%;
+  background-color: $canvasColor;
+  padding: 15px;
+  border: 1px solid black;
+}
+
+.app-controls {
+  flex-basis: 25%;
+  border: 1px solid black;
+
+}
+
+.app-window{
+  flex-basis: 70%;
+  border: 1px solid black;
+}

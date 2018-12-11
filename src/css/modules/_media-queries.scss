@@ -1,0 +1,26 @@
+// Media queries for device sizes
+
+
+@mixin mobile {
+  @media (max-width: $sm-device-size - 1px) {
+    @content;
+  }
+}
+
+@mixin tablet {
+  @media (min-width: $sm-device-size) and (max-width: $md-device-size - 1px) {
+    @content;
+  }
+}
+
+@mixin desktop {
+  @media (min-width: $md-device-size) and (max-width: $lg-device-size - 1px) {
+    @content;
+  }
+}
+
+@mixin large-desktop {
+  @media (min-width: $lg-device-size) {
+    @content;
+  }
+}
