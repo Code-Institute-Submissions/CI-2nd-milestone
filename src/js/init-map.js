@@ -1,39 +1,36 @@
 import { mapStyle } from './map-style';
+import { addMarker } from './add-map-markers';
+import { initAutocomplete } from './autocomplete';
+
 
 // Initialize and add the map
 function initMap() {
-    // The location of Uluru
-    var delft = {
+
+    // The map, centered at Delft
+    var map = new google.maps.Map(
+      // document.getElementById
+      document.getElementById('map'), {
+        zoom: 11,
+        center: {
+          lat: 52.011577,
+          lng: 4.357068
+        },
+        mapTypeIds: ['roadmap'],
+        mapTypeControl: false,
+        styles: mapStyle
+      });
+
+      addMarker(map, {
         lat: 52.011577,
         lng: 4.357068
-    };
-    // The map, centered at Uluru
-    var map = new google.maps.Map(
-        // document.getElementById
-        document.getElementById('map'), {
-            zoom: 11,
-            center: delft,
-            mapTypeIds: ['roadmap'],
-            mapTypeControl: false,
-            styles: mapStyle
-        });
-    // The marker, positioned at Uluru
-    var marker = new google.maps.Marker({
-        position: delft,
-        map: map
-    });
-
-    var input = document.getElementById('city');
-    var autocomplete = new google.maps.places.Autocomplete(input);
-    autocomplete.bindTo('bounds', map);
-
-    // Set the data fields to return when the user selects a place.
-    autocomplete.setFields(
-        ['address_components', 'geometry', 'icon', 'name']);
+      });
+    // Initialize autocomplete
+    const autocomplete = initAutocomplete(map);
 
     var infowindow = new google.maps.InfoWindow();
     var infowindowContent = document.getElementById('infowindow-content');
     infowindow.setContent(infowindowContent);
+
     var marker = new google.maps.Marker({
       map: map,
       anchorPoint: new google.maps.Point(0, -29)

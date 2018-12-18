@@ -15,16 +15,28 @@
   width: 100%;
   background-color: $canvasColor;
   padding: 15px;
-  border: 1px solid #bcbcbc;
+  // border: 1px solid #bcbcbc;
 }
 
 .app-controls {
+  display: flex;
   flex-basis: 25%;
-  border: 1px solid #bcbcbc;
+  flex-direction: column;
+  // border: 1px solid #bcbcbc;
 
 }
 
-.app-window{
+.app-window {
   flex-basis: 70%;
-  border: 1px solid #bcbcbc;
+  // border: 1px solid #bcbcbc;
+}
+
+.map-city-search {
+  flex: 1;
+}
+
+.map-results-container {
+  flex: 5;
+  width: 100%;
+  background-color: $mapResultsBG;
 }
