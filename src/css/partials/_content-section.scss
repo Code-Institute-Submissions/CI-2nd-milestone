@@ -1,5 +1,6 @@
 .section-block {
   @include paddingTopBottom(40px);
+  padding-bottom: 100px;
   background-color: $sectionColor;
 }
 
@@ -14,16 +15,16 @@
   width: 100%;
   background-color: $canvasColor;
   padding: 15px;
-  border: 1px solid black;
+  border: 1px solid #bcbcbc;
 }
 
 .app-controls {
   flex-basis: 25%;
-  border: 1px solid black;
+  border: 1px solid #bcbcbc;
 
 }
 
 .app-window{
   flex-basis: 70%;
-  border: 1px solid black;
+  border: 1px solid #bcbcbc;
 }
