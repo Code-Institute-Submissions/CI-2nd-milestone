@@ -1,3 +1,4 @@
+// Initialize the autocomplete function
 function initAutocomplete(map){
   // Select input field for autocomplete
   var input = document.getElementById('city');
@@ -13,5 +14,7 @@ function initAutocomplete(map){
 
   return autocomplete;
 }
+
+
 // Export Autocomplet
 export { initAutocomplete };

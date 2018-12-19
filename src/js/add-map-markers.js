@@ -1,11 +1,11 @@
-function addMarker(map,pos) {
+function addMarker(options) {
   // The location of Uluru
 
   // The marker, positioned at Uluru
-  var marker = new google.maps.Marker({
-      position: pos,
-      map: map,
-      icon: './src/img/icons/map-marker2-small.png'
+  return new google.maps.Marker({
+    map: options.map,
+    position: options.coords,
+    icon: './src/img/icons/town-icon.png'
   });
 }
 
