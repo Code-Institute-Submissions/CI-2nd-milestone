@@ -5,3 +5,42 @@
     width: 100%;
     /* The width is the width of the web page */
 }
+
+.map-result {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 75px;
+  padding: 10px;
+  background-color: #ececec;
+  color: #5e5e5e;
+  margin-bottom: 2px;
+}
+
+.map-result-header {
+
+}
+
+.map-result-address {
+
+}
+
+.map-result-rating {
+  text-align: right;
+  font-size: 11px;
+}
+
+.map-result:hover {
+  cursor: pointer;
+}
+
+.map-result-selected {
+  background-color: #d0d0d0;
+}
+
+
+.map-result h1 {
+  font-size: 12px;
+  font-weight: $bold;
+  margin-bottom: 10px;
+}

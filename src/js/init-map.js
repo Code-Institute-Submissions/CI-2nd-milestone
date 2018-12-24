@@ -1,7 +1,7 @@
 import { mapStyle } from './map-style';
 import { addMarker } from './add-map-markers';
 import { initAutocomplete } from './autocomplete';
-import { searchPlaces } from './places';
+import { searchPlaces, clearMarkers } from './places';
 
 // Initialize and add the map
 function initMap() {
@@ -23,6 +23,10 @@ function initMap() {
     // Initialize autocomplete
     const autocomplete = initAutocomplete(map);
 
+    // Set globals
+    window.map = map;
+    window.markers = [];
+
 
     // var infowindow = new google.maps.InfoWindow();
     // var infowindowContent = document.getElementById('infowindow-content');
@@ -30,6 +34,9 @@ function initMap() {
 
 
     autocomplete.addListener('place_changed', () => {
+      // Clear clearmarkers
+      clearMarkers();
+
       // Get place
       var place = autocomplete.getPlace();
 
@@ -54,7 +61,7 @@ function initMap() {
         map: map,
         query: {
            location: place.geometry.location,
-           radius: '100',
+           radius: $('#formControlRange')[0].value,
            type: ['restaurant']
          }
       };
@@ -80,5 +87,5 @@ function initMap() {
     });
 }
 
-
+window.initMap = initMap;
 initMap();

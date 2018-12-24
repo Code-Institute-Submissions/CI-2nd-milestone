@@ -11,7 +11,7 @@
 .app-canvas {
   display: flex;
   justify-content: space-between;
-  height: 500px;
+  height: 600px;
   width: 100%;
   background-color: $canvasColor;
   padding: 15px;
@@ -38,5 +38,5 @@
 .map-results-container {
   flex: 5;
   width: 100%;
-  background-color: $mapResultsBG;
+  overflow-y: scroll;
 }
