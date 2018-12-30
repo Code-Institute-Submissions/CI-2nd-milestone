@@ -39,7 +39,7 @@ function searchPlaces(request){
                           <div>Rating: ${result.rating}/5.0</div>
                           <div>${openHours}</div>
                           <div class='plan-route'>
-                            <button type="button" class="btn btn-outline-dark btn-sm plan-route-btn" onclick="planRoute(${i})">Plan route</button>
+                            <button type="button" class="btn btn-outline-dark btn-sm plan-route-btn" onclick="openPlanRoute(${i})">Plan route</button>
                           </div>
                         </div>
                         <div class='infowindow-right'>

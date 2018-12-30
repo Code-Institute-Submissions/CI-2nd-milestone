@@ -5,6 +5,7 @@ var directionsDisplay = new google.maps.DirectionsRenderer;
 // Initialize directions
 directionsDisplay.setMap(map);
 
+export { directionsService, directionsDisplay };
 
 // directionsService.route({
 //       origin: 'Amsterdam',
