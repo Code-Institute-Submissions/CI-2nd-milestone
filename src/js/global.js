@@ -1,7 +1,9 @@
+// ----------------------------------------------------------------------------- CHANGE SLIDER VALUE
 function changedSliderValue(value){
   $('#sliderLabel').html(`Range: ${value} km`);
 }
 
+// ----------------------------------------------------------------------------- SELECT RESULT
 function selectResult(placeIndex, elem){
   if (window.selectedResult) {
     $(window.selectedResult).toggleClass("map-result-selected");
@@ -25,17 +27,26 @@ function selectResult(placeIndex, elem){
   }
 }
 
+// ----------------------------------------------------------------------------- OPEN INFO WINDOW
 function openInfoWindow(index) {
   infoWindows[index].open(map,markers[index]);
 }
 
+// ----------------------------------------------------------------------------- CLOSE ALL INFO WINDOWS
 function closeAllInfoWindows(){
   infoWindows.forEach(infoWindow => {
     infoWindow.close();
   });
 }
 
+// ----------------------------------------------------------------------------- PLAN ROUTE
+function planRoute(index){
+  alert(index);
+}
+
+
 window.changedSliderValue = changedSliderValue;
 window.selectResult = selectResult;
 window.closeAllInfoWindows = closeAllInfoWindows;
 window.openInfoWindow = openInfoWindow;
+window.planRoute = planRoute;

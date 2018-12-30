@@ -1,0 +1,43 @@
+.map-result-header {
+  font-size: 15px;
+  margin-bottom: 5px;
+}
+
+.infowindow-container {
+  @include flexContainerRow(120px){
+    width: 275px;
+    align-items: flex-start;
+  };
+  height: auto;
+  min-height: 120px;
+}
+
+.infowindow-left {
+  padding: 5px;
+  flex-basis: auto;
+}
+
+.infowindow-left > div {
+  margin-bottom: 5px;
+}
+
+.infowindow-right {
+  flex-basis: 100px;
+  height: 100%;
+  padding: 5px;
+}
+
+.infowindow-image {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  overflow: hidden;
+}
+
+.plan-route{
+  margin-top: 15px;
+}
+
+.plan-route-btn {
+  font-size: 11px !important;
+}

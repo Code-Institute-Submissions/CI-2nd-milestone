@@ -5,7 +5,7 @@ function addMarker(options) {
   return new google.maps.Marker({
     map: options.map,
     position: options.coords,
-    icon: './src/img/icons/town-icon.png'
+    icon: './src/img/icons/map-marker-small.png'
   });
 }
 
