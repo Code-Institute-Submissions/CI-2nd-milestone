@@ -32,42 +32,68 @@
   <section class="section-block">
     <div class="container">
       <div class="row">
-        <h1>Let's start</h1>
-      </div>
-      <div class="row">
         <div class="app-canvas">
           <div class="app-controls">
-            <div class="map-city-search">
-              <form onkeypress="return event.keyCode != 13;">
-                <div class=" form-group">
-                  <label for="city">City Name</label>
-                  <input type="text" class="form-control" id="city" placeholder="Enter city">
-                  <!-- <small id="cityHelp" class="form-text text-muted">Enter the name of the city where you want to find some place to relax.</small> -->
-                </div>
-                <div class="form-group">
-                  <label for="formControlRange" id="sliderLabel">Range: 2000km</label>
-                  <input type="range" class="form-control-range" id="formControlRange" value="2000" min="500" max="5000" step="10" onchange="changedSliderValue(value)">
-                </div>
-              </form>
-            </div>
-            <div class="map-results-container">
+            <div class="direction-container shadow-sm p-3 bg-white rounded">
+              <div id="direction-details" class="direction-info shadow-sm">
+                <!-- Automatically generated -->
+              </div>
+              <div id="direction-instruction-list" class="direction-instructions">
 
+              </div>
+            </div>
+            <div class="search-controls shadow-sm p-3 bg-white rounded">
+              <div class="map-city-search shadow-sm">
+                <div class="card">
+                  <div class="card-body">
+                    <h5 class="card-title" style="display:inline-block;">Let's start</h5>
+                    <form onkeypress="return event.keyCode != 13;">
+                      <div class=" form-group">
+                        <input type="text" class="form-control" id="city" placeholder="Enter city">
+                        <!-- <small id="cityHelp" class="form-text text-muted">Enter the name of the city where you want to find some place to relax.</small> -->
+                      </div>
+                      <!-- <div class="form-group">
+                        <label for="formControlRange" id="sliderLabel">Range: 2000km</label>
+                        <input type="range" class="form-control-range" id="formControlRange" value="2000" min="500" max="5000" step="10" onchange="changedSliderValue(value)">
+                      </div> -->
+                      <div class="range-slider">
+                        <label for="formControlRange" id="sliderLabel">Search range</label>
+                        <input class="range-slider__range" id="formControlRange" type="range" value="2000" min="500" max="5000" step="10" onchange="searchQuery()">
+                        <span class="range-slider__value">2.0 km</span>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+
+              </div>
+              <div id="map-results-list" class="map-results-container">
+
+              </div>
             </div>
           </div>
-
           <div class="app-window">
             <div id="route-window">
               <div class="route-window-home">
-                <div class="form-group">
-                  <label for="address_dep">Address of departure</label>
-                  <input type="text" class="form-control" id="address_dep" placeholder="Enter address" autocomplete="off">
-                </div>
-                <div id="route-buttons" class="form-inline">
+                <div class="card" style="width: 18rem;">
+                  <div class="close-route-window">
+                    <button type="button" class="close" aria-label="Close" onclick="closeRouteWindow()">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <img src="src/img/header-mobile.jpg" class="card-img-top" alt="Plan Route">
+                  <div class="card-body">
+                    <h5 class="card-title">Plan your route</h5>
+                    <h6 class="card-subtitle mb-2 text-muted">Selection</h6>
+                    <p class="card-text" id="selected-restaurant"></p>
+                    <p class="card-text" id="selected-restaurant">Please enter your address</p>
+                    <div class="form-group">
+                      <input type="text" class="form-control" id="address_dep" placeholder="Enter address" autocomplete="off">
+                    </div>
+                    <div id="route-buttons"></div>
+                  </div>
                 </div>
               </div>
-              <div class="route-window-selected-restaurant">
-                <div id="selected-restaurant"></div>
-              </div>
+
             </div>
             <!-- Google map -->
             <div id="map"></div>

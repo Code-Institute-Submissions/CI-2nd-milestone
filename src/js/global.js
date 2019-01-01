@@ -1,4 +1,6 @@
 import { directionsService, directionsDisplay } from './init-directions';
+import { processDirections } from './process-directions';
+import { searchPlaces, clearMarkers} from './places';
 
 // ----------------------------------------------------------------------------- CHANGE SLIDER VALUE
 function changedSliderValue(value){
@@ -48,27 +50,12 @@ function openPlanRoute(index){
 
   // Set address of selected restaurant
   let result = searchResults[index];
-  let resHtml = `<div class='infowindow-container'>
-              <div class='infowindow-left'>
-                <div class='map-result-header'><strong>${result.photos[0].html_attributions[0]}</strong></div>
-                <div>${result.vicinity}</div>
-                <div>Rating: ${result.rating}/5.0</div>
-              </div>
-              <div class='infowindow-right'>
-                <div class='infowindow-image'>
-                  <div>
-                    <a href='${result.photos[0].getUrl()}' target='_blank'>
-                      <img src='${result.photos[0].getUrl()}' alt='${result.name}' width='100%'/>
-                    </a>
-                  </div>
-                </div>
-              </div>
-
-            </div>`;
+  let resHtml = `${result.name} <br> ${result.vicinity}`;
   $('#selected-restaurant').html(resHtml);
 
-  let buttonsHtml = `<button type="submit" class="btn btn-primary" onclick="planRoute(${index})">Plan Route!</button>&nbsp;&nbsp;&nbsp;
-                    <button type="submit" class="btn btn-light" onclick="closeRouteWindow()">Return</button>`;
+  let buttonsHtml = `<button type="submit" class="btn btn-primary" onclick="planRoute(${index})">Plan Route!</button>`;
+
+                    // <button type="submit" class="btn btn-light" onclick="closeRouteWindow()">Return</button>
   $('#route-buttons').html(buttonsHtml);
 
 }
@@ -78,32 +65,103 @@ function closeRouteWindow(){
   $('#route-window').css('visibility','hidden');
 }
 
-// ----------------------------------------------------------------------------- CLOSE ROUTE WINDOW
+// ----------------------------------------------------------------------------- OPEN DIRECTION CONTROLS
+function openDirectionControls(){
+  $('.direction-container').css('visibility','visible');
+}
+
+// ----------------------------------------------------------------------------- CLOSE DIRECTION CONTROLS
+function closeDirectionControls(){
+  $('.direction-container').css('visibility','hidden');
+}
+
+
+
+// ----------------------------------------------------------------------------- CLOSE PLAN ROUTE
 function planRoute(index){
+
+  let origin = $('#address_dep')[0].value;
+
+  // Check if address is empty
+  if (origin === ''){
+    alert('Please fill in an address of department');
+    return;
+  }
+
   // Query the route
   directionsService.route({
-        origin: 'Amsterdam',
+        origin: $('#address_dep')[0].value,
         destination: searchResults[index].vicinity,
         travelMode: 'DRIVING'
       }, function(response, status) {
         if (status === 'OK') {
           directionsDisplay.setDirections(response);
+
+          // Process route
+          processDirections(response);
+
+          // Close infoWindow
+          closeAllInfoWindows();
+
+
         } else {
           window.alert('Directions request failed due to ' + status);
         }
       });
 
-  // Close infoWindow
-  closeAllInfoWindows();
-
-  // Remove all markers
-  markers.forEach(marker => {
-    marker.setMap(null);
-  });
-
   // Close route WINDOW
   closeRouteWindow();
 
+  // Remove all markers
+  clearMarkers();
+
+  // Open directions controls
+  openDirectionControls();
+}
+
+// ----------------------------------------------------------------------------- RESTART
+function restart(){
+  closeDirectionControls();
+}
+
+// ----------------------------------------------------------------------------- SEARCH QUERY
+function searchQuery(){
+  if (place == undefined){
+    return;
+  }
+
+  // Get radius
+  let radius = $('#formControlRange')[0].value;
+
+  // Control zoomlevel
+  let zoomlvl = 13;
+  if (Number(radius) >= 4000){
+    zoomlvl = 11;
+  }
+  else if (Number(radius) < 4000 && Number(radius) >= 3000){
+    zoomlvl = 13;
+  }
+  else if (Number(radius) < 2000){
+    zoomlvl = 14;
+  }
+
+  // Set zoomlevel
+  map.setZoom(zoomlvl);
+  
+  //Search for places
+  let request = {
+    map: map,
+    query: {
+       location: place.geometry.location,
+       radius: radius,
+       type: ['restaurant','cafe']
+     }
+  };
+  // clear markers
+  clearMarkers();
+
+  // Perform new search query
+  searchPlaces(request);
 }
 
 window.changedSliderValue = changedSliderValue;
@@ -113,3 +171,7 @@ window.openInfoWindow = openInfoWindow;
 window.openPlanRoute = openPlanRoute;
 window.closeRouteWindow = closeRouteWindow;
 window.planRoute = planRoute;
+window.openDirectionControls = openDirectionControls;
+window.restart = restart;
+window.searchQuery = searchQuery;
+window.clearMarkers = clearMarkers;

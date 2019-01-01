@@ -19,9 +19,8 @@
 }
 
 .app-controls {
-  display: flex;
-  flex-basis: 25%;
-  flex-direction: column;
+  flex-basis: 30%;
+  position: relative;
   // border: 1px solid #bcbcbc;
 
 }
@@ -39,5 +38,15 @@
 .map-results-container {
   flex: 5;
   width: 100%;
+  margin-top: 20px;
   overflow-y: scroll;
+}
+
+.search-controls {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+  z-index: 1;
 }

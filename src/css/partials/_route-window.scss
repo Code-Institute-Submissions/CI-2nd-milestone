@@ -2,20 +2,29 @@
   position: absolute;
   display: flex;
   flex-direction: row;
+  justify-content: space-around;
   width: 100%;
   height: 100%;
   background-color: $routeCanvas;
   z-index: 2;
-  color: white;
   visibility: hidden;
 }
 
 .route-window-home {
+  display: flex;
   flex-basis: 50%;
   padding: 20px;
+  align-items: center;
+  justify-content: space-around;
 }
 
 .route-window-selected-restaurant {
   flex-basis: 50%;
   padding: 20px;
+}
+
+.close-route-window {
+  position: absolute;
+  right: 0;
+  padding-right: 5px;
 }

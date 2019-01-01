@@ -67,12 +67,23 @@ function searchPlaces(request){
 
           // Make listHTML
           let resultHTML =
-          `<div class='map-result' onclick='selectResult(${i},this)'>
-              <div class='map-result-header'><h1>${result.name}</h1></div>
-              <div class='map-result-address'>${result.vicinity}</div>
-              <div class='map-result-rating'>${result.rating}/5.0</div>
+            `<div class="card shadow-sm map-result" onclick='selectResult(${i},this)'>
+              <div class="card-body">
+                <h5 class="card-title map-result-title">${result.name}</h5>
+                <h6 class="card-subtitle mb-2 text-muted map-result-subtitle">${result.vicinity}</h6>
+                <p class="card-text">${result.rating}</p>
+              </div>
             </div>`;
 
+            // `<li class='list-group-item' onclick='selectResult(${i},this)'>
+            //   <div class="card">
+            //     <div class="card-body">
+            //       <h5 class="card-title" style="display:inline-block;">${result.name}</h5>
+            //       <h6 class="card-subtitle mb-2 text-muted" style="display:inline-block;">&nbsp;${result.vicinity} (driving)</h6>
+            //       <p class="card-text">${result.rating}</p>
+            //     </div>
+            //   </div>
+            // </li>`;
           // Append listHMLT
           listHTML += resultHTML
         }
@@ -87,7 +98,7 @@ function searchPlaces(request){
     }
 
     // Change innerHTML of container
-    $('.map-results-container').html(listHTML);
+    $('#map-results-list').html(listHTML);
 
     // Store results global
     window.searchResults = results;

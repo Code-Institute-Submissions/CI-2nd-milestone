@@ -2,9 +2,11 @@
 function initAutocomplete(map){
   // Select input field for autocomplete
   var input = document.getElementById('city');
+  var input2 = document.getElementById('address_dep');
 
   // Initialize autocomplete
   var autocomplete = new google.maps.places.Autocomplete(input);
+  var autocomplete2 = new google.maps.places.Autocomplete(input2);
 
   // Bind autocomplete results to map
   autocomplete.bindTo('bounds', map);

@@ -14,7 +14,7 @@ const map = new google.maps.Map(
     },
     mapTypeIds: ['roadmap'],
     mapTypeControl: false,
-    styles: mapStyle
+  //  styles: mapStyle
   });
 
 // Initialize autocomplete
@@ -23,6 +23,7 @@ const autocomplete = initAutocomplete(map);
 // Set globals
 window.map = map;
 window.markers = [];
+window.place = undefined;
 
 
 // var infowindow = new google.maps.InfoWindow();
@@ -42,43 +43,21 @@ autocomplete.addListener('place_changed', () => {
    // User entered the name of a Place that was not suggested and
    // pressed the Enter key, or the Place Details request failed.
    window.alert(`No details available for input: ${place.name}`);
+   window.place = undefined;
    return;
   }
 
-  // If the place has a geometry, then present it on a map.
+  window.place = place;
+
+  // // If the place has a geometry, then present it on a map.
   // if (place.geometry.viewport) {
   //  map.fitBounds(place.geometry.viewport);
   // } else {
-   map.setCenter(place.geometry.location);
-   map.setZoom(14);  // Why 17? Because it looks good.
+  //  map.setCenter(place.geometry.location);
+  //  map.setZoom(11);  // Why 17? Because it looks good.
   // }
 
-  //Search for places
-  let request = {
-    map: map,
-    query: {
-       location: place.geometry.location,
-       radius: $('#formControlRange')[0].value,
-       type: ['restaurant','cafe']
-     }
-  };
-  searchPlaces(request);
+  // Do search query
+  searchQuery();
 
-  // let marker = addMarker({map:map, coords: place.geometry.location});
-  // // marker.setPosition(place.geometry.location);
-  // marker.setVisible(true);
-  //
-  // var address = '';
-  // if (place.address_components) {
-  //   address = [
-  //     (place.address_components[0] && place.address_components[0].short_name || ''),
-  //     (place.address_components[1] && place.address_components[1].short_name || ''),
-  //     (place.address_components[2] && place.address_components[2].short_name || '')
-  //   ].join(' ');
-  // }
-  //
-  // infowindowContent.children['place-icon'].src = place.icon;
-  // infowindowContent.children['place-name'].textContent = place.name;
-  // infowindowContent.children['place-address'].textContent = address;
-  // infowindow.open(map, marker);
 });

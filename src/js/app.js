@@ -4,5 +4,4 @@ import '../css/main.scss';
 // Import javascript
 import './init-map';
 import './global';
-
-planRoute();
+import './range-slider';
