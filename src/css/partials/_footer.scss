@@ -1,4 +1,12 @@
 .footer-block {
     height: 200px;
     background-color: $footerColor;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.footer-content {
+  flex-basis: auto;
+  text-align: center;
 }
