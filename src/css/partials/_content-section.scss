@@ -15,12 +15,31 @@
   width: 100%;
   background-color: $canvasColor;
   padding: 15px;
+  flex-direction: row;
+
+  @include tablet {
+    flex-direction: column;
+    height: 1200px;
+  }
+
+  @include mobile {
+    flex-direction: column;
+    height: 1200px;
+  }
   // border: 1px solid #bcbcbc;
 }
 
 .app-controls {
   flex-basis: 30%;
   position: relative;
+
+  @include tablet {
+    flex-basis: 600px;
+  }
+
+  @include mobile {
+    flex-basis: 600px;
+  }
   // border: 1px solid #bcbcbc;
 
 }
@@ -29,6 +48,14 @@
   flex-basis: 70%;
   position: relative;
   // border: 1px solid #bcbcbc;
+
+  @include tablet {
+    flex-basis: 600px;
+  }
+
+  @include mobile {
+    flex-basis: 600px;
+  }
 }
 
 .map-city-search {

@@ -36,13 +36,23 @@
   display: flex;
   align-items: center;
   flex-basis: 35%;
-  height: 60%;
+  height: 70%;
   // border: 1px solid white;
   text-align: center;
 }
 
 .header-container > div:first-child {
   flex-basis: 60%;
+
+  @include tablet {
+    flex-basis: 100% !important;
+    padding: 20px;
+  }
+
+  @include mobile {
+    flex-basis: 100% !important;
+    padding: 20px;
+  }
 }
 
 
@@ -59,4 +69,13 @@
 
 .header-mobile-image {
   @include addBackground('../img/sketch-mobil-white.png');
+
+  @include tablet {
+    display: none !important;
+  }
+
+  @include mobile {
+    display: none !important;
+  }
+
 }
