@@ -16,7 +16,7 @@ function searchPlaces(request){
 
 
       results.forEach((result, i) => {
-        if (result.vicinity != undefined){
+        if (result.vicinity != undefined && result.rating != undefined && result.photos != undefined){
           let options = {
             map: request.map,
             coords: result.geometry.location
@@ -31,6 +31,7 @@ function searchPlaces(request){
           if (result.opening_hours != undefined) {
             openHours = result.opening_hours.open_now ? '<span style="color:green;font-weight:500">Now open</span>' : '<span style="color:red;font-weight:500">Now closed</span>';
           }
+
           let infoWindow = new google.maps.InfoWindow({
             content: `<div class='infowindow-container'>
                         <div class='infowindow-left'>

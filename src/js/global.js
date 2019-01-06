@@ -104,24 +104,34 @@ function planRoute(index){
           closeAllInfoWindows();
 
 
+            // Close route WINDOW
+            closeRouteWindow();
+
+            // Remove all markers
+            clearMarkers();
+
+            // Open directions controls
+            openDirectionControls();
+
+
         } else {
           window.alert('Directions request failed due to ' + status);
+          return false;
         }
       });
 
-  // Close route WINDOW
-  closeRouteWindow();
-
-  // Remove all markers
-  clearMarkers();
-
-  // Open directions controls
-  openDirectionControls();
 }
 
 // ----------------------------------------------------------------------------- RESTART
 function restart(){
   closeDirectionControls();
+
+  // Clear route
+  directionsDisplay.setDirections({routes: []});
+
+  // Clear result list
+  $('#map-results-list').html('');
+  $('#city').val('');
 }
 
 // ----------------------------------------------------------------------------- SEARCH QUERY
@@ -147,7 +157,8 @@ function searchQuery(){
 
   // Set zoomlevel
   map.setZoom(zoomlvl);
-  
+  map.setCenter(place.geometry.location);
+
   //Search for places
   let request = {
     map: map,
