@@ -16,21 +16,33 @@ This website page is focussing for users that cannot book a tasting experience, 
 - As a user I can share my selected options with other people from the Tasting Experience website so that they can also experience my selection.
 
 ## Features
+Here you can see the features that are already implemented and which are left to implement in this project.
 
 ### Existing Features
+- Search restaurants in a selected region.
+- Navigate the region on the google maps.
+- See the rating, photo's and address of the restaurants.
+- Select restaurant and start route navigation.
+- See route details such as the distance and the expected travelling time.
+- See route instructions line by line.
 
 ### Features Left to Implement
+- Option or filter to choose what kind of restaurants you want to see.
+- Select which method you want to route to your destination (by bicycle/train etc..).
+- Share your selected option with the community of The Tasting Experience.
 
 ## Technologies used
 This project uses several existing third party technologies to improve code quality and to speed up the development time. The following tools are used:
 - **[JQuery](https://jquery.com/)**
     - JQuery makes things like HTML document traversal and manipulation, event handling, animation, and Ajax much simpler with an easy-to-use API that works across a multitude of browsers.
+- **[NodeJs](https://nodejs.org/en/)**
+    - Node is designed to build scalable network applications. It will be used to run the webpack builder and start a webserver for project testing.
 - **[npm](https://www.npmjs.com/)**
     - npm is the package manager for JavaScript and the world’s largest software registry. It will be used to manage all the javaScript dependencies used in this project.
 - **[webpack](https://webpack.js.org/)**
     - Webpack is a build tool that puts all of your assets, including JavaScript, images, fonts, and CSS, in a dependency graph.
-- **[Jasmine](https://jasmine.github.io/)**
-    - A JavaScript testing framework to test the correct behaviour of the JavaScript code.
+- **[Google Maps API](https://developers.google.com/maps/)**
+    - The Google Maps API to allow usage of their google maps service.
 
 Additionally, the following webpack modules are used:
 - **node-sass, sass-loader**
@@ -41,6 +53,22 @@ Additionally, the following webpack modules are used:
 - **html-webpack-plugin**
 - **mini-css-extract-plugin**
 
+## Installing
+This project uses NodeJs for managing Javascript libraries, webpack and a testing webserver. Visite their [website](https://nodejs.org/en/) to install NodeJs for your operation system. NodeJs ships with npm, which will be automatically installed.
+
+In order to run this project, please clone the repository to a folder on your computer. Open a terminal (or commandprompt) and cd into your cloned folder. Type in the following command:
+```
+npm install
+```
+This command will install all the module dependencies that are listed in the package.json file. After installation of all the modules, you can type the following command to spin up the webserver of webpack:
+```
+npm run build
+```
+After a short amount of time, you will see that the terminal gives you the address of the local webserver that is running.
+Images
+
+If you open your browser and navigate to that url (in my case http://localhost:8080) you will see that the website is running but that the Google Maps is not showing. This happens due to a missing Google Maps API key. You will need to [get](https://cloud.google.com/maps-platform/) your own API key and put it in the index.html file located in the 'src' folder of this project.
+images
 
 ## Testing
 
@@ -49,5 +77,8 @@ Additionally, the following webpack modules are used:
 ## Credits
 ### Content
 ### Media
+- Images used in this project are grabbed from [pixabay](https://pixabay.com).
+
 ### Acknowledgements
 - The short description of webpack was used from [this](https://blog.andrewray.me/webpack-when-to-use-and-why/) blog.
+- A good introduction tutorial that I followed for webpack was provided by the Academind [videos](https://www.youtube.com/watch?v=GU-2T7k9NfI&list=PL55RiY5tL51rcCnrOrZixuOsZhAHHy6os).
