@@ -56,7 +56,7 @@ Additionally, the following webpack modules are used:
 ## Installing
 This project uses NodeJs for managing Javascript libraries, webpack and a testing webserver. Visite their [website](https://nodejs.org/en/) to install NodeJs for your operation system. NodeJs ships with npm, which will be automatically installed.
 
-In order to run this project, please clone the repository to a folder on your computer. Open a terminal (or commandprompt) and cd into your cloned folder. Type in the following command:
+In order to run this project, please clone the repository to a folder on your computer. Open a terminal (or command prompt) and cd into your cloned folder. Type in the following command:
 ```
 npm install
 ```
@@ -65,12 +65,21 @@ This command will install all the module dependencies that are listed in the pac
 npm run build
 ```
 After a short amount of time, you will see that the terminal gives you the address of the local webserver that is running.
-Images
+
+[webserver running](https://github.com/Seboeb/CI-2nd-milestone/blob/master/src/img/webpack-server.PNG)
 
 If you open your browser and navigate to that url (in my case http://localhost:8080) you will see that the website is running but that the Google Maps is not showing. This happens due to a missing Google Maps API key. You will need to [get](https://cloud.google.com/maps-platform/) your own API key and put it in the index.html file located in the 'src' folder of this project.
-images
+
+[place api key](https://github.com/Seboeb/CI-2nd-milestone/blob/master/src/img/api_key.png)
 
 ## Testing
+The project can be tested using the buildin webserver functionality of webpack. A full documentation of this functionality can be found [here](https://webpack.js.org/configuration/dev-server/). By spinning up this server and adding extra flags you can simulate the project being hosted by a real webserver.
+
+By typing the following command
+```
+webpack-dev-server --mode development
+```
+the webpack server will spin up and will run in development mode. Note that webpack was already installed during the `npm install` command. When the build of the webserver was successful, you can navigate in your browser to the local url where the server is running. When using the Google Chrome browers, you can open the development console and check for network operations and logs in the console while using the The Tasting Experience app website.
 
 ## Deployment
 
