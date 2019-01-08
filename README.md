@@ -66,11 +66,11 @@ npm run build
 ```
 After a short amount of time, you will see that the terminal gives you the address of the local webserver that is running.
 
-[webserver running](https://github.com/Seboeb/CI-2nd-milestone/blob/master/src/img/webpack-server.PNG)
+![webserver running](https://github.com/Seboeb/CI-2nd-milestone/blob/master/src/img/webpack-server.PNG)
 
 If you open your browser and navigate to that url (in my case http://localhost:8080) you will see that the website is running but that the Google Maps is not showing. This happens due to a missing Google Maps API key. You will need to [get](https://cloud.google.com/maps-platform/) your own API key and put it in the index.html file located in the 'src' folder of this project.
 
-[place api key](https://github.com/Seboeb/CI-2nd-milestone/blob/master/src/img/api_key.png)
+![place api key](https://github.com/Seboeb/CI-2nd-milestone/blob/master/src/img/api_key.png)
 
 ## Testing
 The project can be tested using the buildin webserver functionality of webpack. A full documentation of this functionality can be found [here](https://webpack.js.org/configuration/dev-server/). By spinning up this server and adding extra flags you can simulate the project being hosted by a real webserver.
