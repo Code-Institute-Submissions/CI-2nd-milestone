@@ -75,7 +75,7 @@ If you open your browser and navigate to that url (in my case http://localhost:8
 ## Testing
 The project can be tested using the buildin webserver functionality of webpack. A full documentation of this functionality can be found [here](https://webpack.js.org/configuration/dev-server/). By spinning up this server and adding extra flags you can simulate the project being hosted by a real webserver.
 
-By typing the following command
+By typing the following command:
 ```
 webpack-dev-server --mode development
 ```

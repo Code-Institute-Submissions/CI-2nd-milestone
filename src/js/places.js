@@ -1,22 +1,27 @@
 import { addMarker } from './add-map-markers';
 // Searches for places around certain center
-function searchPlaces(request){
+function searchPlaces(request) {
   let service = new google.maps.places.PlacesService(request.map);
 
   service.nearbySearch(request.query, processResults);
 
   // Process the results of the place queries
   function processResults(results, status) {
+
     // When status is ok
     let listHTML = '';
-    if (status === google.maps.places.PlacesServiceStatus.OK){
+    if (status === google.maps.places.PlacesServiceStatus.OK) {
+      // Sort results on rating
+      var results = results.sort(function (a, b) { return b.rating - a.rating });
+
       // Create new arrays
       let markers = new Array();
       let infoWindows = new Array();
 
 
       results.forEach((result, i) => {
-        if (result.vicinity != undefined && result.rating != undefined && result.photos != undefined){
+        if (result.vicinity != undefined && result.rating != undefined && result.photos != undefined && result.rating >= 3.8) {
+
           let options = {
             map: request.map,
             coords: result.geometry.location
@@ -72,19 +77,19 @@ function searchPlaces(request){
               <div class="card-body">
                 <h5 class="card-title map-result-title">${result.name}</h5>
                 <h6 class="card-subtitle mb-2 text-muted map-result-subtitle">${result.vicinity}</h6>
-                <p class="card-text">${result.rating}</p>
+                <p class="card-text">Rating: ${result.rating}/5.0</p>
               </div>
             </div>`;
 
-            // `<li class='list-group-item' onclick='selectResult(${i},this)'>
-            //   <div class="card">
-            //     <div class="card-body">
-            //       <h5 class="card-title" style="display:inline-block;">${result.name}</h5>
-            //       <h6 class="card-subtitle mb-2 text-muted" style="display:inline-block;">&nbsp;${result.vicinity} (driving)</h6>
-            //       <p class="card-text">${result.rating}</p>
-            //     </div>
-            //   </div>
-            // </li>`;
+          // `<li class='list-group-item' onclick='selectResult(${i},this)'>
+          //   <div class="card">
+          //     <div class="card-body">
+          //       <h5 class="card-title" style="display:inline-block;">${result.name}</h5>
+          //       <h6 class="card-subtitle mb-2 text-muted" style="display:inline-block;">&nbsp;${result.vicinity} (driving)</h6>
+          //       <p class="card-text">${result.rating}</p>
+          //     </div>
+          //   </div>
+          // </li>`;
           // Append listHMLT
           listHTML += resultHTML
         }
@@ -114,7 +119,7 @@ function searchPlaces(request){
   }
 }
 
-function clearMarkers(){
+function clearMarkers() {
   markers.forEach(marker => {
     marker.setMap(null);
   });

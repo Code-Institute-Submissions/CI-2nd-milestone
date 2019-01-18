@@ -5,3 +5,9 @@ import '../css/main.scss';
 import './init-map';
 import './global';
 import './range-slider';
+
+// Add event listeners
+$('input[type=radio]').click(function () {
+    // Perform new search
+    if (this.name == 'type') searchQuery();
+});
