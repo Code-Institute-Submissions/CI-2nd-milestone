@@ -41,6 +41,8 @@ This project uses several existing third party technologies to improve code qual
     - npm is the package manager for JavaScript and the world’s largest software registry. It will be used to manage all the javaScript dependencies used in this project.
 - **[webpack](https://webpack.js.org/)**
     - Webpack is a build tool that puts all of your assets, including JavaScript, images, fonts, and CSS, in a dependency graph.
+- **[Jasmine](https://jasmine.github.io/)**
+    - A JavaScript testing framework to test the correct behaviour of the JavaScript code.
 - **[Google Maps API](https://developers.google.com/maps/)**
     - The Google Maps API to allow usage of their google maps service.
 
