@@ -25,10 +25,10 @@ Here you can see the features that are already implemented and which are left to
 - Select restaurant and start route navigation.
 - See route details such as the distance and the expected travelling time.
 - See route instructions line by line.
+- Option or filter to choose what kind of accomodation you want to see.
+- Select which method you want to route to your destination (by bicycle, car or walking).
 
 ### Features Left to Implement
-- Option or filter to choose what kind of restaurants you want to see.
-- Select which method you want to route to your destination (by bicycle/train etc..).
 - Share your selected option with the community of The Tasting Experience.
 
 ## Technologies used
@@ -77,7 +77,19 @@ If you open your browser and navigate to that url (in my case http://localhost:8
 ![place api key](https://github.com/Seboeb/CI-2nd-milestone/blob/master/src/img/api_key.png)
 
 ## Testing
-The project can be tested using the buildin webserver functionality of webpack. A full documentation of this functionality can be found [here](https://webpack.js.org/configuration/dev-server/). By spinning up this server and adding extra flags you can simulate the project being hosted by a real webserver.
+This project uses the Jasmine testing framework for testing javascript functionality. You can run the Jasmine test by first building the project with the following command:
+```
+npm run build:prod
+```
+This will construct all the necessary project files in the docs folder. You will see a spec.bundle.js file, which is the constructed test file made from the app.spec.js file located in the spec folder. In order to run the test, type in the following command in your terminal:
+```
+npm run test
+```
+Jasmine will start its testing procedure. When every test passes, you will see the following screen.
+
+![jasmine test](https://github.com/Seboeb/CI-2nd-milestone/blob/master/src/img/jasmine_test.png)
+
+Additionally, the project can be tested using the build-in webserver functionality of webpack. A full documentation of this functionality can be found [here](https://webpack.js.org/configuration/dev-server/). By spinning up this server and adding extra flags you can simulate the project being hosted by a real webserver.
 
 By typing the following command:
 ```
@@ -86,9 +98,14 @@ webpack-dev-server --mode development
 the webpack server will spin up and will run in development mode. Note that webpack was already installed during the `npm install` command. When the build of the webserver was successful, you can navigate in your browser to the local url where the server is running. When using the Google Chrome browers, you can open the development console and check for network operations and logs in the console while using the The Tasting Experience app website.
 
 ## Deployment
+This project is deployed using GitHub pages and can be seen over [here](https://seboeb.github.io/CI-2nd-milestone/). If you want to deploy the project by yourself, you must first build the project using webpack. By typing
+```
+npm run build:prod
+```
+in the terminal, webpack packs all your used files and minifies the javascript files. Subsequently, these files are place in the docs folder. If you want to use GitHub pages, you must select the option to host your files from the docs folder in the master branch (can be found under the repository settings).
 
 ## Credits
-### Content
+Find below the sources used for this project. 
 ### Media
 - Images used in this project are grabbed from [pixabay](https://pixabay.com).
 
