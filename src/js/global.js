@@ -1,4 +1,3 @@
-import { directionsService, directionsDisplay } from './init-directions';
 import { processDirections } from './process-directions';
 import { searchPlaces, clearMarkers } from './places';
 
@@ -91,13 +90,13 @@ function planRoute(index) {
   let travelMode = $('input[name=travelMode]:checked')[0].value;
 
   // Query the route
-  directionsService.route({
+  window.directionsService.route({
     origin: $('#address_dep')[0].value,
     destination: searchResults[index].vicinity,
     travelMode: travelMode
   }, function (response, status) {
     if (status === 'OK') {
-      directionsDisplay.setDirections(response);
+      window.directionsDisplay.setDirections(response);
 
       // Process route
       processDirections(response);
@@ -129,7 +128,7 @@ function restart() {
   closeDirectionControls();
 
   // Clear route
-  directionsDisplay.setDirections({ routes: [] });
+  window.directionsDisplay.setDirections({ routes: [] });
 
   // Clear result list
   $('#map-results-list').html('');

@@ -8,8 +8,7 @@ function addMarker(options) {
   // The marker, positioned at Uluru
   return new google.maps.Marker({
     map: options.map,
-    position: options.coords,
-    icon: 'https://github.com/Seboeb/CI-2nd-milestone/blob/master/src/img/icons/map-marker-small.png'
+    position: options.coords
   });
 }
 
