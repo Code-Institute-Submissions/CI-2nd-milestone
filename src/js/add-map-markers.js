@@ -9,7 +9,7 @@ function addMarker(options) {
   return new google.maps.Marker({
     map: options.map,
     position: options.coords,
-    icon: './src/img/icons/map-marker-small.png'
+    icon: 'https://github.com/Seboeb/CI-2nd-milestone/blob/master/src/img/icons/map-marker-small.png'
   });
 }
 
