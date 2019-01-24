@@ -1,7 +1,5 @@
-import { mapStyle } from './map-style';
-import { addMarker } from './add-map-markers';
 import { initAutocomplete } from './autocomplete';
-import { searchPlaces, clearMarkers } from './places';
+import { clearMarkers } from './places';
 
 // The map, centered at Delft
 const map = new google.maps.Map(
@@ -14,7 +12,7 @@ const map = new google.maps.Map(
     },
     mapTypeIds: ['roadmap'],
     mapTypeControl: false,
-  //  styles: mapStyle
+    //  styles: mapStyle
   });
 
 // Initialize autocomplete
@@ -40,11 +38,11 @@ autocomplete.addListener('place_changed', () => {
 
   // When no valid place has been selected
   if (!place.geometry) {
-   // User entered the name of a Place that was not suggested and
-   // pressed the Enter key, or the Place Details request failed.
-   window.alert(`No details available for input: ${place.name}`);
-   window.place = undefined;
-   return;
+    // User entered the name of a Place that was not suggested and
+    // pressed the Enter key, or the Place Details request failed.
+    window.alert(`No details available for input: ${place.name}`);
+    window.place = undefined;
+    return;
   }
 
   window.place = place;

@@ -12,7 +12,10 @@ function searchPlaces(request) {
     let listHTML = '';
     if (status === google.maps.places.PlacesServiceStatus.OK) {
       // Sort results on rating
-      var results = results.sort(function (a, b) { return b.rating - a.rating });
+      results = results.sort((a, b) => b.rating - a.rating);
+
+      // filter results
+      results = results.filter(result => result.vicinity && result.rating && result.photos && result.rating >= 3.8);
 
       // Create new arrays
       let markers = new Array();
@@ -20,25 +23,24 @@ function searchPlaces(request) {
 
 
       results.forEach((result, i) => {
-        if (result.vicinity != undefined && result.rating != undefined && result.photos != undefined && result.rating >= 3.8) {
 
-          let options = {
-            map: request.map,
-            coords: result.geometry.location
-          };
+        let options = {
+          map: request.map,
+          coords: result.geometry.location
+        };
 
-          // Add marker
-          let marker = addMarker(options);
-          markers.push(marker);
+        // Add marker
+        let marker = addMarker(options);
+        markers.push(marker);
 
-          // Add InfoWindow
-          let openHours = '';
-          if (result.opening_hours != undefined) {
-            openHours = result.opening_hours.open_now ? '<span style="color:green;font-weight:500">Now open</span>' : '<span style="color:red;font-weight:500">Now closed</span>';
-          }
+        // Add InfoWindow
+        let openHours = '';
+        if (result.opening_hours != undefined) {
+          openHours = result.opening_hours.open_now ? '<span style="color:green;font-weight:500">Now open</span>' : '<span style="color:red;font-weight:500">Now closed</span>';
+        }
 
-          let infoWindow = new google.maps.InfoWindow({
-            content: `<div class='infowindow-container'>
+        let infoWindow = new google.maps.InfoWindow({
+          content: `<div class='infowindow-container'>
                         <div class='infowindow-left'>
                           <div class='map-result-header'><strong>${result.photos[0].html_attributions[0]}</strong></div>
                           <div>${result.vicinity}</div>
@@ -59,21 +61,21 @@ function searchPlaces(request) {
                         </div>
 
                       </div>`
-          });
-          infoWindows.push(infoWindow);
+        });
+        infoWindows.push(infoWindow);
 
-          // Add click listener
-          marker.addListener('click', () => {
-            // Close all other infoWindows
-            closeAllInfoWindows();
+        // Add click listener
+        marker.addListener('click', () => {
+          // Close all other infoWindows
+          closeAllInfoWindows();
 
-            // Open selected infoWindow
-            infoWindow.open(map, marker);
-          });
+          // Open selected infoWindow
+          infoWindow.open(map, marker);
+        });
 
-          // Make listHTML
-          let resultHTML =
-            `<div class="card shadow-sm map-result" onclick='selectResult(${i},this)'>
+        // Make listHTML
+        let resultHTML =
+          `<div class="card shadow-sm map-result" onclick='selectResult(${i},this)'>
               <div class="card-body">
                 <h5 class="card-title map-result-title">${result.name}</h5>
                 <h6 class="card-subtitle mb-2 text-muted map-result-subtitle">${result.vicinity}</h6>
@@ -81,18 +83,17 @@ function searchPlaces(request) {
               </div>
             </div>`;
 
-          // `<li class='list-group-item' onclick='selectResult(${i},this)'>
-          //   <div class="card">
-          //     <div class="card-body">
-          //       <h5 class="card-title" style="display:inline-block;">${result.name}</h5>
-          //       <h6 class="card-subtitle mb-2 text-muted" style="display:inline-block;">&nbsp;${result.vicinity} (driving)</h6>
-          //       <p class="card-text">${result.rating}</p>
-          //     </div>
-          //   </div>
-          // </li>`;
-          // Append listHMLT
-          listHTML += resultHTML
-        }
+        // `<li class='list-group-item' onclick='selectResult(${i},this)'>
+        //   <div class="card">
+        //     <div class="card-body">
+        //       <h5 class="card-title" style="display:inline-block;">${result.name}</h5>
+        //       <h6 class="card-subtitle mb-2 text-muted" style="display:inline-block;">&nbsp;${result.vicinity} (driving)</h6>
+        //       <p class="card-text">${result.rating}</p>
+        //     </div>
+        //   </div>
+        // </li>`;
+        // Append listHMLT
+        listHTML += resultHTML
       });
 
       // Add markers to global

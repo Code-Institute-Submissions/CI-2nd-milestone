@@ -4,7 +4,8 @@
   "description": "This project is build upon [The Tasting Experience](https://github.com/Seboeb/Code-Institute) project. At The Tasting Experience website you can book a cultural tasting for your friends or beloved ones, but sometimes you do not have the time or the money to book a tasting experience. Sometimes you just want to grab a nice drink - maybe with some delicious food - and still want a great experience for, lets say, just the midday or evening. Where do you look for such a place?",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test-init": "node ./node_modules/jasmine/bin/jasmine.js init",
+    "test": "node ./node_modules/jasmine/bin/jasmine.js",
     "build": "webpack-dev-server --mode development",
     "build:prod": "webpack -p"
   },
@@ -25,6 +26,7 @@
     "css-loader": "^1.0.1",
     "file-loader": "^2.0.0",
     "html-webpack-plugin": "^3.2.0",
+    "jasmine": "^3.3.1",
     "mini-css-extract-plugin": "^0.4.4",
     "node-sass": "^4.10.0",
     "sass-loader": "^7.1.0",

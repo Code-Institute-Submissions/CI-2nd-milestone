@@ -1,5 +1,8 @@
 // Initialize the autocomplete function
-function initAutocomplete(map){
+function initAutocomplete(map) {
+
+  if (!map) return 'No input arguments found.';
+
   // Select input field for autocomplete
   var input = document.getElementById('city');
   var input2 = document.getElementById('address_dep');

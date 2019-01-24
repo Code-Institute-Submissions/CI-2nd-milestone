@@ -4,10 +4,13 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 module.exports = {
-    entry: './src/js/app.js',
+    entry: {
+        app: './src/js/app.js',
+        spec: './spec/app.spec.js'
+    },
     output: {
-        path: path.resolve(__dirname,'dist'),
-        filename: 'my.bundle.js'
+        path: path.resolve(__dirname, 'dist'),
+        filename: '[name].bundle.js'
     },
     module: {
         rules: [
@@ -17,7 +20,7 @@ module.exports = {
                 use: {
                     loader: 'babel-loader',
                     options: {
-                        presets: [['@babel/preset-env', {modules: false}]]      //Modules false -> no require() convertion
+                        presets: [['@babel/preset-env', { modules: false }]]      //Modules false -> no require() convertion
                     }
                 }
             },
@@ -34,7 +37,7 @@ module.exports = {
             },
             {
                 test: /\.scss$/,
-                use: [MiniCssExtractPlugin.loader,'css-loader','sass-loader']
+                use: [MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader']
             },
             {
                 test: /\.(woff(2)?|ttf|eot|svg)(\?v=\d+\.\d+\.\d+)?$/,
@@ -54,13 +57,14 @@ module.exports = {
             jQuery: 'jquery'
         }),
         new HtmlWebpackPlugin({
+            chunks: ['app'],
             template: './src/index.html'
         }),
         new MiniCssExtractPlugin({
-          // Options similar to the same options in webpackOptions.output
-          // both options are optional
-          filename: "[name].css",
-          chunkFilename: "[id].css"
+            // Options similar to the same options in webpackOptions.output
+            // both options are optional
+            filename: "[name].css",
+            chunkFilename: "[id].css"
         })
     ]
 
