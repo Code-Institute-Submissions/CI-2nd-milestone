@@ -153,12 +153,14 @@
       window.markers = [];
       window.place = undefined;
 
-      document.addEventListener("DOMContentLoaded", function () {
-        // initialize google map listeners and direction service
-        console.log('ready');
-        window.initGoogleMaps();
-        window.initDirections();
-      });
+      window.initGoogleMaps();
+      window.initDirections();
+
+      // document.addEventListener("DOMContentLoaded", function () {
+      //   // initialize google map listeners and direction service
+      //   console.log('ready');
+
+      // });
 
     }
   </script>
