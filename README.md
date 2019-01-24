@@ -50,8 +50,10 @@ Additionally, the following webpack modules are used:
 - **babel-loader, babel/core, babel/preset-env**
     - These modules are used to convert modern ES6 JavaScript files into robust ES5 JavaScript files which is supported on any browser.
 - **file-loader**
+- **html-loader**
 - **html-webpack-plugin**
 - **mini-css-extract-plugin**
+- **clean-webpack-plugin**
 
 ## Installing
 This project uses NodeJs for managing Javascript libraries, webpack and a testing webserver. Visite their [website](https://nodejs.org/en/) to install NodeJs for your operation system. NodeJs ships with npm, which will be automatically installed.

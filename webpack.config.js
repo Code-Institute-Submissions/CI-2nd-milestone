@@ -1,7 +1,8 @@
 const path = require('path');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const CleanWebpackPlugin = require('clean-webpack-plugin');
 
 module.exports = {
     entry: {
@@ -23,6 +24,10 @@ module.exports = {
                         presets: [['@babel/preset-env', { modules: false }]]      //Modules false -> no require() convertion
                     }
                 }
+            },
+            {
+                test: /\.html$/,
+                use: ['html-loader']
             },
             {
                 test: /\.(png|jpg)$/,
@@ -65,7 +70,8 @@ module.exports = {
             // both options are optional
             filename: "[name].css",
             chunkFilename: "[id].css"
-        })
+        }),
+        new CleanWebpackPlugin(['docs'])
     ]
 
 }
