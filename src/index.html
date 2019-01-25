@@ -72,7 +72,7 @@
                           <label><input type="radio" name="type" value="restaurant" checked>Restaurants</label>
                         </div>
                         <div class="checkbox">
-                          <label><input type="radio" name="type" value="hotel">Hotels</label>
+                          <label><input type="radio" name="type" value="lodging">Hotels</label>
                         </div>
                       </div>
                     </form>
@@ -153,15 +153,17 @@
       window.markers = [];
       window.place = undefined;
 
-      window.initGoogleMaps();
-      window.initDirections();
-
-      // document.addEventListener("DOMContentLoaded", function () {
-      //   // initialize google map listeners and direction service
-      //   console.log('ready');
-
-      // });
-
+      // Initialize google maps listener and diretions service
+      (function initAPIs() {
+        try {
+          window.initGoogleMaps();
+          window.initDirections();
+        }
+        catch (e) {
+          console.log('retry initapi');
+          setTimeout(initAPIs, 500);
+        }
+      })();
     }
   </script>
 
