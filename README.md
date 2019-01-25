@@ -104,6 +104,19 @@ npm run build:prod
 ```
 in the terminal, webpack packs all your used files and minifies the javascript files. Subsequently, these files are place in the docs folder. If you want to use GitHub pages, you must select the option to host your files from the docs folder in the master branch (can be found under the repository settings).
 
+## Developing
+If you want to continue developing this project, you can do so by cloning this git repository. Make sure you install the project (see Installing) with the help of npm. Make sure you get your own Google Maps API key and put the key in the index.html file. The webpack config file is already good to go and does not need additional tweaks (but you can if you want). 
+
+All the development files are located in the **src** folder (like the css/scss, html, fonts, images and javascript files). To spin up the development webserver, use the command:
+```
+npm run build
+```
+If you want to write your own testing cases, please add them to the app.spec.js file located in the **spec** folder, or make a new spec file (don't forget to include the new file in the jasmine.json). You can build your new test by running the
+```
+npm run build:prod
+```
+command in the terminal.  
+
 ## Credits
 Find below the sources used for this project. 
 ### Media
